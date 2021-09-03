@@ -1,0 +1,1 @@
+Russian monoasticism in painting

@@ -2,15 +2,17 @@ package main
 
 import (
 	"encoding/csv"
-	"github.com/gocolly/colly/v2"
 	"log"
 	"os"
+	"github.com/gocolly/colly/v2"
 	"strconv"
 	"strings"
+
 )
 
 func main() {
 	log.Println("Collector initialization")
+
 	collector := colly.NewCollector()
 
 	log.Println("Song file creation")
@@ -48,8 +50,8 @@ func main() {
 
 		// replace comam by hyphen
 		title = strings.Replace(title, ",", "-", -1)
-
 		log.Println(title, date, link)
+
 		err := writer.Write([]string{title, date, link})
 		if err != nil {
 			log.Fatal("Cannot write to file", err)
@@ -65,4 +67,7 @@ func main() {
 	for p := 1; p < 16; p++ {
 		collector.Visit("https://www.senscritique.com/liste/VGM_Anthologie_des_meilleures_musiques_de_jeux_video_retro_l/250682/page-" + strconv.Itoa(p))
 	}
+
 }
+
+
